@@ -7,8 +7,22 @@
   - `npm run test-anagram`
 */
 
-function isAnagram(str1, str2) {
-
+// .has lookup of O(1)
+function isAnagramSecoundApproach(str1, str2) {
+  const str1Set = new Set([...str1.toLowerCase()]);
+  return [...str2].every((char) => str1Set.has(char.toLowerCase()));
 }
+
+const isAnagramThirdApproach = (str1, str2) =>
+  [...str1.toLowerCase()].sort().join('') ==
+  [...str2.toLowerCase()].sort().join('');
+
+// you can add any method to native contructors but it's NOT recommended aur gaali khaoge apne seniors se
+String.prototype.kashHarCheezSortKarnaItnaEasyHota = function () {
+  return [...this.toLowerCase()].sort().join('');
+};
+const isAnagram = (str1, str2) =>
+  str1.kashHarCheezSortKarnaItnaEasyHota() ==
+  str2.kashHarCheezSortKarnaItnaEasyHota();
 
 module.exports = isAnagram;
